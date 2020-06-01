@@ -1,0 +1,306 @@
+Shell Scripting
+
+Shell - command interpreter
+Shell Script - a file contains valid unix/linux commands
+
+$ vi filename
+-
+-
+-
+-
+
+OR 
+
+Cat >> Filname
+
+Execute shell script file
+——
+
+$sh filename.sh
+
+Echo - display messages
+
+1. vi Test [press enter]
+Two modes in vi editor - Insert mode / read mode
+
+Press insert key/I
+#-Comment line using hash symbol
+
+Echo welcome
+Echo to
+Echo shell world
+
+Save and exit = press esc to change to normal mode then type :wq!
+
+To only quit without saving = q!
+
+Cat Test [to view test.sh]
+
+To execute Test.sh
+Sh Test
+
+To rename [mv Test Script]
+
+Read  - Read input from the user
+
+2. vi readInput
+Press I or insert key to edit
+# this is a script for reading input from user
+Echo Enter your name:
+Read name
+Echo Your name is :$name
+
+Save and exit
+
+Sh readInput to execute
+
+Arithmetic operators
++ = Addition
+- = subtraction
+\* = multiplication
+/ = division
+%= modular division
+
+3. vi arithmetic.sh
+A = 20
+b= 10
+Echo $a
+Echo $b
+Echo sum of $a and $b : `expr $a + $b` 
+Echo sub of $a and $b : `expr $a - $b` 
+Echo multi of $a and $b : `expr $a \* $b` 
+Echo division of $a and $b : `expr $a / $b` 
+Echo modular division of $a and $b : `expr $a & $b` 
+`expr $a + $b`      (` = Acend symbol)
+
+Save and quit
+Sh arithmetic.sh
+
+4. Write a shell script to find the sum of two numbers
+vi sum.sh
+Echo enter first number:
+Read num1
+Echo enter second number:
+Read num2
+
+c = `expr $num1 + $num2`
+Echo sum of two given numbers is:  $c
+
+Save and quit 
+Execute sh sum.sh
+
+Relational and Logical Operators
+
+Greater than = -gt
+Less Than = -lt
+Greater than equal to = -ge
+Less than equal to = -le
+Equal to = -eq
+Not equal to = -ne
+
+=================
+
+AND  = -a
+OR = -o
+NOT = -n
+
+Conditional statements
+1. Simple if
+2. If…else..if
+3. Nested if
+
+Simple if
+—————
+If [condition]
+Then
+	statement1
+	statement2
+Else
+	statement3
+Fi
+
+5. Write a script to find largest number
+vi largest.sh
+Echo enter first number:
+Read a
+Echo enter second number:
+Read b
+If [ $a -gt $b ]
+Then 
+Echo a is larger than b
+Else
+Echo b is larger than a
+Fi
+
+Save and exit 
+Execute largest.sh
+
+If..else…if
+——————
+
+If [condition1]
+Then
+	statement1
+Else
+if [ conditon2]	
+Then
+	statement2
+Fi
+Fi
+
+6. To Biggest of three numbers
+vi largestamong3.sh
+Read a b c
+If [ $a -gt $b -a $a -gt $c ]
+Then 
+Echo $a is greater than b and c
+Else
+If [ $b -gt $a -a $b -gt $c ]
+Then 
+Echo $b is greater than a and c
+Else
+Echo $c is greater than a and b
+Fi
+Fi
+
+Save and exit
+And execute largestamong3.sh
+
+
+Nested if
+——————
+If [condition]
+Then 
+	statements
+	if [conditon]
+	then
+		statements
+	else
+		statements
+	fi
+Else
+	statements
+Fi
+
+Check the number is odd or even( check number is positive or not then check even or odd).
+
+VI evenorodd.sh
+Read n
+
+If [ $n -gt 0 ]
+Then
+Echo number is positive
+r= `expr $n % 2`
+If [ $r -eq 0]
+Then 
+Echo number is even
+Else
+Echo number is odd
+Fi
+Else
+Echo number is negative
+Fi
+
+
+Test is keyword/command = is a part of a shell command
+To check if the file or directory is present or not or file permissions and existence of contents in a file
+
+Options 
+-f = checks if file is ordinary file if yes then return true elsfalse
+-d = checks if file is a directory or not
+-r= checks if file is readable or not
+-w = checks if file is writable or not
+-x = checks if file is executable or not
+-s = checks if file has any content or not or checks the size of the file greater than 0.
+ syntax
+If test -option variable
+Then
+True statement
+Else
+False statement
+Fi
+
+Write a shell script to check a file is exist or not.
+vi fileexistence.sh
+Echo enter a file name:
+Read file
+If test -f $file
+Then 
+Echo file does exist
+Else
+Echo file doesn’t exists
+Fi
+
+Save and exit
+Run fileexistence.sh
+
+Write a script to check given file is normal file or directory
+
+Echo enter a file/directory name:
+Read fd
+If test -f $fd
+Echo given file is normal file
+Else
+If test -d $fd
+Then 
+Echo given file is a directory
+Else
+Echo neither a file nor a directory
+Fi 
+Fi
+
+Save and exit
+Run the above script
+
+FOR LOOPS
+
+For I in 1 2 3 4 5
+Do
+Echo $I
+I=`expr $I +1`
+Done
+
+While loop
+
+a=0
+While [ $a -lt 10 ]
+Do
+Echo $a
+If [ $a -eq 5 ]
+Then 
+Break
+Fi
+a=`expr $a +1`
+Done
+
+
+Switch Case statement
+
+Case var in
+1)
+  Statement
+;;
+2)
+   Statements
+;;
+3)
+   Statements
+;;
+*)
+    Statements
+Esac
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
